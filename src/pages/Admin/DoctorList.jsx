@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import {Layout} from '../../components/Layout';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Layout } from "../../components/Layout";
 import { showLoading, hideLoading } from "../../redux/alertSlice";
 import axios from "axios";
-import {toast} from 'react-hot-toast'
+import { toast } from "react-hot-toast";
 import { Table } from "antd";
-import moment from 'moment';
+import moment from "moment";
 
 export const DoctorList = () => {
-
   const [doctors, setDoctors] = useState([]);
   const dispatch = useDispatch();
- 
+
   const getDoctorsData = async () => {
     try {
       dispatch(showLoading());
@@ -46,7 +46,7 @@ export const DoctorList = () => {
         getDoctorsData();
       }
     } catch (error) {
-      toast.error('Error changing doctor account status');
+      toast.error("Error changing doctor account status");
       dispatch(hideLoading());
     }
   };
@@ -70,7 +70,7 @@ export const DoctorList = () => {
     {
       title: "Created At",
       dataIndex: "createdAt",
-      render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
+      render: (record, text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
     {
       title: "status",
@@ -102,10 +102,10 @@ export const DoctorList = () => {
     },
   ];
   return (
-   <Layout>
-       <h1 className='page-header'> Doctors List</h1>
-       <hr />
+    <Layout>
+      <h1 className="page-header"> Doctors List</h1>
+      <hr />
       <Table columns={columns} dataSource={doctors} />
-   </Layout>
-  )
-}
+    </Layout>
+  );
+};

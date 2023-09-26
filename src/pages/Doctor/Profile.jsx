@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { DoctorForm } from "../../components/DoctorForm";
 import { Layout } from "../../components/Layout";

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Button, Col, DatePicker, Row, TimePicker } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -120,7 +121,7 @@ export const BookAppointment = () => {
                 src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
                 alt=""
                 width="100%"
-                height='400'
+                height="400"
               />
             </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
@@ -144,20 +145,29 @@ export const BookAppointment = () => {
                 {doctor.website}
               </p>
               <div className="d-flex flex-column pt-2 mt-2">
-                <DatePicker format="DD-MM-YYYY" onChange={(value) => {
+                <DatePicker
+                  format="DD-MM-YYYY"
+                  onChange={(value) => {
                     setDate(moment(value).format("DD-MM-YYYY"));
                     setIsAvailable(false);
-                  }}/>
-                <TimePicker format="HH:mm" className="mt-3"onChange={(value) => {
+                  }}
+                />
+                <TimePicker
+                  format="HH:mm"
+                  className="mt-3"
+                  onChange={(value) => {
                     setIsAvailable(false);
                     setTime(moment(value).format("HH:mm"));
-                  }} />
-                {!isAvailable &&   <Button
-                  className="primary-button mt-3 full-width-button"
-                  onClick={checkAvailability}
-                >
-                  Check Availability
-                </Button>}
+                  }}
+                />
+                {!isAvailable && (
+                  <Button
+                    className="primary-button mt-3 full-width-button"
+                    onClick={checkAvailability}
+                  >
+                    Check Availability
+                  </Button>
+                )}
 
                 {isAvailable && (
                   <Button

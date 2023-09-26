@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Table } from "antd";
 import axios from "axios";
 import moment from "moment";
@@ -35,7 +36,7 @@ export const DoctorAppointment = () => {
       dispatch(showLoading());
       const response = await axios.post(
         "/api/doctor/change-appointment-status",
-        { appointmentId : record._id, status: status },
+        { appointmentId: record._id, status: status },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

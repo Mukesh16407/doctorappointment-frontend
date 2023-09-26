@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import {Layout} from '../../components/Layout';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Layout } from "../../components/Layout";
 import { showLoading, hideLoading } from "../../redux/alertSlice";
 import axios from "axios";
 import { Table } from "antd";
-import moment from 'moment';
+import moment from "moment";
 
 export const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -43,7 +44,7 @@ export const UserList = () => {
     {
       title: "Created At",
       dataIndex: "createdAt",
-      render: (record , text) => moment(record.createdAt).format("DD-MM-YYYY"),
+      render: (record, text) => moment(record.createdAt).format("DD-MM-YYYY"),
     },
     {
       title: "Actions",
@@ -56,10 +57,10 @@ export const UserList = () => {
     },
   ];
   return (
-   <Layout>
-       <h1 className='page-header'> User List</h1>
-       <hr />
-      <Table columns={columns} dataSource={users}/>
-   </Layout>
-  )
-}
+    <Layout>
+      <h1 className="page-header"> User List</h1>
+      <hr />
+      <Table columns={columns} dataSource={users} />
+    </Layout>
+  );
+};
