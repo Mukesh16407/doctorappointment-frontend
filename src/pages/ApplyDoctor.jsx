@@ -3,13 +3,13 @@ import moment from "moment";
 import { Layout } from "../components/Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertSlice";
-import  axios from "axios";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DoctorForm } from "../components/DoctorForm";
+import { BASE_URL } from "../utils/Helper";
 
 export const ApplyDoctor = () => {
-
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
@@ -19,7 +19,7 @@ export const ApplyDoctor = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/apply-doctor-account",
+        `${BASE_URL}/api/user/apply-doctor-account`,
         {
           ...values,
           userId: user._id,
@@ -50,7 +50,7 @@ export const ApplyDoctor = () => {
     <Layout>
       <h1 className="page-title">Apply Doctor</h1>
       <hr />
-      <DoctorForm onFinish={onFinish}/>
+      <DoctorForm onFinish={onFinish} />
     </Layout>
   );
 };

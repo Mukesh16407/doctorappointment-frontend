@@ -8,6 +8,7 @@ import { showLoading, hideLoading } from "../../redux/alertSlice";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { BASE_URL } from "../../utils/Helper";
 
 export const Profile = () => {
   const { user } = useSelector((state) => state.user);
@@ -20,7 +21,7 @@ export const Profile = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/update-doctor-profile",
+        `${BASE_URL}/api/doctor/update-doctor-profile`,
         {
           ...values,
           userId: user._id,
@@ -51,7 +52,7 @@ export const Profile = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-user-id",
+        `${BASE_URL}/api/doctor/get-doctor-info-by-user-id`,
         {
           userId: params.userId,
         },

@@ -6,6 +6,7 @@ import { Layout } from "../components/Layout";
 import { hideLoading, showLoading } from "../redux/alertSlice";
 import { Table } from "antd";
 import axios from "axios";
+import { BASE_URL } from "../utils/Helper";
 
 export const Appointment = () => {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ export const Appointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.get(
-        "/api/user/get-appointments-by-user-id",
+        `${BASE_URL}/api/user/get-appointments-by-user-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

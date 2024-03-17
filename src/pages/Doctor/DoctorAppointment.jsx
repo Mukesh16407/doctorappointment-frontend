@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Layout } from "../../components/Layout";
 import { hideLoading, showLoading } from "../../redux/alertSlice";
+import { BASE_URL } from "../../utils/Helper";
 
 export const DoctorAppointment = () => {
   const [appointments, setAppointments] = useState([]);
@@ -16,7 +17,7 @@ export const DoctorAppointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.get(
-        "/api/doctor/get-appointments-by-doctor-id",
+        `${BASE_URL}/api/doctor/get-appointments-by-doctor-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -35,7 +36,7 @@ export const DoctorAppointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/change-appointment-status",
+        `${BASE_URL}/api/doctor/change-appointment-status`,
         { appointmentId: record._id, status: status },
         {
           headers: {

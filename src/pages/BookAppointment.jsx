@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Layout } from "../components/Layout";
 import { hideLoading, showLoading } from "../redux/alertSlice";
 import moment from "moment";
+import { BASE_URL } from "../utils/Helper";
 
 export const BookAppointment = () => {
   const { user } = useSelector((state) => state.user);
@@ -24,7 +25,7 @@ export const BookAppointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-id",
+        `${BASE_URL}/api/doctor/get-doctor-info-by-id`,
         {
           doctorId: params.doctorId,
         },
@@ -48,7 +49,7 @@ export const BookAppointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/check-booking-avilability",
+        `${BASE_URL}/api/user/check-booking-avilability`,
         {
           doctorId: params.doctorId,
           date: date,
@@ -77,7 +78,7 @@ export const BookAppointment = () => {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/book-appointment",
+        `${BASE_URL}/api/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,
