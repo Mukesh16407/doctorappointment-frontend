@@ -6,25 +6,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../redux/alertSlice";
 export const Register = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-    const onFinish = async(values)=>{
-      try{
-        dispatch(showLoading())
-       const response = await axios.post("/api/user/register",values);
-       dispatch(hideLoading())
-       if(response.data.success){
+  const onFinish = async (values) => {
+    try {
+      dispatch(showLoading());
+      const response = await axios.post("/api/user/register", values);
+      dispatch(hideLoading());
+      if (response.data.success) {
         toast.success(response.data.message);
-        navigate('/login')
-       }else{
-        toast.error(response.data.message)
-       }
-      }catch(err){
-        dispatch(hideLoading())
-        toast.error("something went wrong")
+        navigate("/login");
+      } else {
+        toast.error(response.data.message);
       }
+    } catch (err) {
+      dispatch(hideLoading());
+      toast.error("something went wrong");
     }
+  };
   return (
     <div className="authentication">
       <div className="authentication-form card p-3">
