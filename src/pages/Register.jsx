@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../redux/alertSlice";
+import { BASE_URL } from "../utils/Helper";
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -12,7 +13,10 @@ export const Register = () => {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/user/register", values);
+      const response = await axios.post(
+        `${BASE_URL}/api/user/register`,
+        values
+      );
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
